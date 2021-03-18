@@ -1,7 +1,7 @@
 from django.db import models
 
-
 # Create your models here.
+
 class History(models.Model):
     bs1 = models.IntegerField(null=True)
     bs2 = models.IntegerField(null=True)

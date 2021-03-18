@@ -7,12 +7,20 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def historylist(request):
+    # form = Insertform
+    #
+    # context = {
+    #     'form': form
+    # }
+    # return render(request, 'test.html', context)
     try:
         Historys = History.objects.all().order_by('id')
+        form = Insertform()
         if request.method == 'POST':
-            form = Insertform(request.POST)
+            form = Insertform(request.POST, request.FILES)
             if form.is_valid():
-                return HttpResponseRedirect('/test/')
+                form.save()
+                return render(request)
         else:
             form = Insertform()
     except:
